@@ -27,12 +27,12 @@
 
           buildInputs = [
             pkgs.go_1_25
-            pkgs.fish
+            # pkgs.fish
           ];
 
           shellHook = ''
-            export SHELL=${pkgs.fish}/bin/fish
-            exec ${pkgs.fish}/bin/fish
+            # export SHELL=${pkgs.fish}/bin/fish
+            # exec ${pkgs.fish}/bin/fish
           '';
 
         };
