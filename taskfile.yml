@@ -1,0 +1,7 @@
+version: '3'
+
+tasks:
+  dev:
+    cmds:
+      - go build -o ./bin/kumo cmd/kumo/main.go
+      - ./bin/kumo

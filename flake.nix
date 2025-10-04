@@ -27,6 +27,8 @@
 
           buildInputs = [
             pkgs.go_1_25
+            pkgs.gopls
+            pkgs.golangci-lint-langserver
             # pkgs.fish
           ];
 

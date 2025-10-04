@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/briheet/kumo/internal/cmdutils/config"
 	"github.com/spf13/cobra"
@@ -15,7 +16,9 @@ func Execute(ctx context.Context) int {
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 
 			// load config
-			cfg := config.InitViperConfig()
+			cfg := config.InitViperConfig(cmd)
+
+			fmt.Println(cfg.Get("title"))
 
 			// opentelemetry otel
 			// tracing, metrics, runtime
@@ -25,6 +28,19 @@ func Execute(ctx context.Context) int {
 
 			return nil
 		},
+		RunE: func(cmd *cobra.Command, args []string) error {
+			// Main service logic goes here
+			// Just a print here for now
+
+			return nil
+
+		},
+	}
+
+	rootCmd.PersistentFlags().String("config", "config.toml", "config file path")
+
+	if err := rootCmd.Execute(); err != nil {
+		return 1
 	}
 
 	return 0
