@@ -1,7 +1,32 @@
 version: '3'
 
 tasks:
-  dev:
+
+  build:
+    silent: true
     cmds:
-      - go build -o ./bin/kumo cmd/kumo/main.go
+      - go build -ldflags "-s -w" -o ./bin/kumo cmd/kumo/main.go
+    
+  dev:
+    silent: true
+    deps: [build]
+    cmds:
       - ./bin/kumo
+
+  service:
+    deps: [build]
+    silent: true
+    cmds:
+      - ./bin/kumo service
+
+  gui:
+    deps: [build]
+    silent: true
+    cmds:
+      - ./bin/kumo gui
+
+  help:
+    deps: [build]
+    silent: true
+    cmds:
+      - ./bin/kumo --help

@@ -11,7 +11,7 @@ import (
 func Execute(ctx context.Context) int {
 
 	rootCmd := &cobra.Command{
-		Use:   "service",
+		Use:   "kumo",
 		Short: "Exchange injestion service",
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 
@@ -19,6 +19,8 @@ func Execute(ctx context.Context) int {
 			cfg := config.InitViperConfig(cmd)
 
 			fmt.Println(cfg.Get("title"))
+
+			// Init of things at root level
 
 			// opentelemetry otel
 			// tracing, metrics, runtime
@@ -28,16 +30,12 @@ func Execute(ctx context.Context) int {
 
 			return nil
 		},
-		RunE: func(cmd *cobra.Command, args []string) error {
-			// Main service logic goes here
-			// Just a print here for now
-
-			return nil
-
-		},
 	}
 
 	rootCmd.PersistentFlags().String("config", "config.toml", "config file path")
+
+	rootCmd.AddCommand(ServiceCmd(ctx))
+	rootCmd.AddCommand(GUICmd(ctx))
 
 	if err := rootCmd.Execute(); err != nil {
 		return 1
