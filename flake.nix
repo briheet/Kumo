@@ -60,8 +60,6 @@
             };
           };
 
-        # Put nats here
-        
 
         devShells.default = pkgs.mkShell {
           inputsFrom = [
