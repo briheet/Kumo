@@ -2,12 +2,12 @@ package cmd
 
 import (
 	"context"
-	"fmt"
 
+	"github.com/briheet/kumo/internal/gui"
 	"github.com/spf13/cobra"
 )
 
-func GUICmd(context context.Context) *cobra.Command {
+func GUICmd(ctx context.Context) *cobra.Command {
 
 	guiCmd := &cobra.Command{
 		Use:   "gui",
@@ -17,11 +17,10 @@ func GUICmd(context context.Context) *cobra.Command {
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
 
-			fmt.Println("HI")
-			return nil
+			err := gui.Start(ctx)
+			return err
 		},
 	}
 
 	return guiCmd
-
 }
