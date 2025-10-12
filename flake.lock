@@ -49,22 +49,6 @@
         "type": "github"
       }
     },
-    "northwind": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1725093501,
-        "narHash": "sha256-1xmr7I+Uo+PE2G/ltUmnFGeLX4TIvVem20oiccGWI9A=",
-        "owner": "pthom",
-        "repo": "northwind_psql",
-        "rev": "cd0ef28d66369fbe177778e604e4be0f153c9e5c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pthom",
-        "repo": "northwind_psql",
-        "type": "github"
-      }
-    },
     "process-compose-flake": {
       "locked": {
         "lastModified": 1758658658,
@@ -84,7 +68,6 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
-        "northwind": "northwind",
         "process-compose-flake": "process-compose-flake",
         "services-flake": "services-flake",
         "systems": "systems"

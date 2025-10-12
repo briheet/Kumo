@@ -23,5 +23,4 @@ func ServiceCmd(context context.Context) *cobra.Command {
 	}
 
 	return serviceCmd
-
 }
